@@ -1,0 +1,13 @@
+---
+network:
+  host: 0.0.0.0
+  port: 8081
+
+es:
+  host: localhost
+  port: 9200
+
+# list of md5 hashes representing unique clients
+client_ids:
+  - abcdef1234567890abcdef1234567890
+  
