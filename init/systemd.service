@@ -4,6 +4,7 @@ After=multi-user.target
 
 [Service]
 Type=forking
+User=cspreporting
 ExecStart=/usr/bin/env python3 /opt/ContentSecurityPolicyReport/api.py
 
 [Install]
