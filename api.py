@@ -30,7 +30,7 @@ class ContentSecurityPolicyReport():
 
     def set_es(self):
         try:
-            self.es = Elasticsearch([{'host': 'frsys04.pretwolk.nl','port':9200}])
+            self.es = Elasticsearch([{'host': 'frsys04','port':9200}])
         except:
             error = str(sys.exc_info())
             self.json_response(503)

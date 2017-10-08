@@ -8,6 +8,8 @@ Read [this](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP#Enabling_repor
 
 The API does some basic checks if the POSTer is a normal browser and it expects the proper HTTP headers. Nothing witholds an adversary to craft a valid request and poison your data. 
 
+Code and environment developed and tested on Debian 9.
+
 ## TODO
 - Add configurable settings
 - Add demo screenshots to github
@@ -16,6 +18,7 @@ The API does some basic checks if the POSTer is a normal browser and it expects 
 - Add auto index creation (for ES clusters with disabled autoindex creation)
 
 ## INSTALL
+Install dependencies, add user, clone code, set virtualenv, install python requirements, configure systemd
 ```
 apt install python3-pip python3-venv
 useradd -r -s /bin/false cspreporting
