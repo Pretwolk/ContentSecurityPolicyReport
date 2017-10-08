@@ -1,20 +1,21 @@
 # ContentSecurityPolicyReport
 Parse HTTP CSP reports to ElasticSearch
 
-CONTEXT
+## CONTEXT
 This python3 API takes the Content Security Policy reporting POST from a browser and adds it to the configured Elasticsearch cluster.
 
-Read https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP#Enabling_reporting before using this API
+Read [this](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP#Enabling_reporting) before using this API
 
 The API does some basic checks if the POSTer is a normal browser and it expects the proper HTTP headers. Nothing witholds an adversary to craft a valid request and poison your data. 
 
-TODO
+## TODO
 - Add configurable settings
 - Add demo screenshots to github
 - Add IP blacklisting/throtteling
 - Add server side threading
+- Add auto index creation (for ES clusters with disabled autoindex creation)
 
-INSTALL
+## INSTALL
 ```
 apt install python3-pip python3-venv
 useradd -r -s /bin/false cspreporting
@@ -30,11 +31,11 @@ systemctl enable ContentSecurityPolicyReport
 systemctl start ContentSecurityPolicyReport
 ```
 
-CONFIG
+## CONFIG
 Still need to implement
 
-RUNNING 
-Nginx config example 
+## RUNNING 
+### Nginx config example 
 ```
 server {
     listen 443 ssl;
@@ -57,4 +58,10 @@ server {
         proxy_pass http://[::1]:8080;
     }
 }
+```
+
+### CSP header example
+CSP header example for Nginx. This will block everyting except content loaded from the $host itself
+```
+add_header Content-Security-Policy "default-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; child-src 'self'; img-src 'self' report-uri REPORT_URI_GOES_HERE/api/vi/csp/unique_id;";
 ```
